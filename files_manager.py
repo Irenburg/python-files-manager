@@ -44,6 +44,9 @@ files = os.listdir(folder_path)
 # Loop through all files and move every file according to its extension.
 for file in files:
     file_path = os.path.join(folder_path, file)
+
+    if os.path.isdir(file_path):
+        continue
     
     if file.endswith(FileTypes.DOCUMENTS):
         print('Moving %s to %s...' % (file, DOCUMENTS))
