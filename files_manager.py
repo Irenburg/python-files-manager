@@ -7,6 +7,16 @@ import sys, os, shutil, pyperclip
 CLASSES = ('Documents', 'Compressed', 'Programs', 'Videos', 'Music','Images')
 DOCUMENTS, COMPRESSED, PROGRAMS, VIDEOS, MUSIC, IMAGES =  CLASSES
 
+class FileTypes:
+    """ Add more types here """
+    DOCUMENTS = ('.pdf', '.txt', '.odt', '.docx')
+    COMPRESSED = ('.zip', '.rar', '.tar', '.7z', '.tar.gz', '.tar.xz')
+    PROGRAMS = ('.deb', '.rpm', '.exe', '.AppImage')
+    VIDEOS = ('.mp4', '.mkv')
+    MUSIC = ('.mp3',)
+    IMAGES = ('.png', '.jpg', '.jpeg', '.svg')
+
+
 # Get the folder path.
 if len(sys.argv) > 1:
     folder_path = sys.argv[1]
@@ -35,25 +45,24 @@ files = os.listdir(folder_path)
 for file in files:
     file_path = os.path.join(folder_path, file)
     
-    if os.path.isdir(file_path):
-        continue
-    
-    if file.endswith('.pdf') or file.endswith('.txt') or file.endswith('.odt') or file.endswith('.docx'):
+    if file.endswith(FileTypes.DOCUMENTS):
         print('Moving %s to %s...' % (file, DOCUMENTS))
         shutil.move(file_path, os.path.join(folder_path, DOCUMENTS))
-    elif file.endswith('.zip') or file.endswith('.rar') or file.endswith('.tar') or file.endswith('.tar.gz') or file.endswith('.tar.xz'):
+    if file.endswith(FileTypes.COMPRESSED):
         print('Moving %s to %s...' % (file, COMPRESSED))
         shutil.move(file_path, os.path.join(folder_path, COMPRESSED))
-    elif file.endswith('.deb') or file.endswith('.rpm') or file.endswith('.exe') or file.endswith('.AppImage'):
+    if file.endswith(FileTypes.PROGRAMS):
         print('Moving %s to %s...' % (file, PROGRAMS))
         shutil.move(file_path, os.path.join(folder_path, PROGRAMS))
-    elif file.endswith('.mp4') or file.endswith('.mkv'):
+    if file.endswith(FileTypes.VIDEOS):
         print('Moving %s to %s...' % (file, VIDEOS))
         shutil.move(file_path, os.path.join(folder_path, VIDEOS))
-    elif file.endswith('.mp3'):
+    if file.endswith(FileTypes.MUSIC):
         print('Moving %s to %s...' % (file, MUSIC))
         shutil.move(file_path, os.path.join(folder_path, MUSIC))
-    elif file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.svg'):
+    if file.endswith(FileTypes.IMAGES):
         print('Moving %s to %s...' % (file, IMAGES))
         shutil.move(file_path, os.path.join(folder_path, IMAGES))
+
+
 print('Done!')
