@@ -51,19 +51,19 @@ for file in files:
     if file.endswith(FileTypes.DOCUMENTS):
         print('Moving %s to %s...' % (file, DOCUMENTS))
         shutil.move(file_path, os.path.join(folder_path, DOCUMENTS))
-    if file.endswith(FileTypes.COMPRESSED):
+    elif file.endswith(FileTypes.COMPRESSED):
         print('Moving %s to %s...' % (file, COMPRESSED))
         shutil.move(file_path, os.path.join(folder_path, COMPRESSED))
-    if file.endswith(FileTypes.PROGRAMS):
+    elif file.endswith(FileTypes.PROGRAMS):
         print('Moving %s to %s...' % (file, PROGRAMS))
         shutil.move(file_path, os.path.join(folder_path, PROGRAMS))
-    if file.endswith(FileTypes.VIDEOS):
+    elif file.endswith(FileTypes.VIDEOS):
         print('Moving %s to %s...' % (file, VIDEOS))
         shutil.move(file_path, os.path.join(folder_path, VIDEOS))
-    if file.endswith(FileTypes.MUSIC):
+    elif file.endswith(FileTypes.MUSIC):
         print('Moving %s to %s...' % (file, MUSIC))
         shutil.move(file_path, os.path.join(folder_path, MUSIC))
-    if file.endswith(FileTypes.IMAGES):
+    elif file.endswith(FileTypes.IMAGES):
         print('Moving %s to %s...' % (file, IMAGES))
         shutil.move(file_path, os.path.join(folder_path, IMAGES))
 
